@@ -20,8 +20,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lk&81rbs)o@p@w8(15mzye%33s__3@)(gttswbzbb23j+-gly3'
 
+
+#tutorial video, if you need secret_key PM me for it
+#there is a linux version as well
+#https://www.youtube.com/watch?v=IolxqkL7cD8
+SECRET_KEY = os.environ.get('CPSC454_DJANGO_SECRET_KEY')
+AWS_ACCESS_KEY_ID = os.environ.get('CPSC454_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('CPSC454_AWS_SECRET')
+AWS_STORAGE_BUCKET_NAME = "cpsc454-encryptfiles"
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+
+DEFAULT_FILE_STORAGE = 'django_project.custom_storage.MediaStorage'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,6 +58,7 @@ INSTALLED_APPS = [
     
     # external apps
     'crispy_forms',
+    'storages'
 
 ]
 
@@ -143,3 +157,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'webpage-home'
 LOGIN_URL = 'login'
+
+
+
+
+
+
+
