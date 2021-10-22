@@ -28,13 +28,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('CPSC454_DJANGO_SECRET_KEY')
 AWS_ACCESS_KEY_ID = os.environ.get('CPSC454_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('CPSC454_AWS_SECRET')
-AWS_STORAGE_BUCKET_NAME = "django-files"
+AWS_STORAGE_BUCKET_NAME = "cpsc454-encryptfiles"
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'django_project.custom_storage.MediaStorage'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
