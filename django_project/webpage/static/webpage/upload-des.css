@@ -4,4 +4,5 @@
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://ak.picdn.net/shutterstock/videos/21281653/thumb/1.jpg);
     background-position: center;
     background-size: cover;
+    position: absolute;
 }
