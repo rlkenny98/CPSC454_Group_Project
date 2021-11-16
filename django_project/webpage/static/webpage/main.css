@@ -1,14 +1,9 @@
 /* TO-DO @MARIA: Put css formatting here. */
 body {
-    margin:auto;
-    padding:auto;
+    margin:0;
+    padding:0;
     font-family: 'Courier New', Courier, monospace;
 
-}
-
-.upload-body{
-    margin: auto;
-    padding: auto;
 }
 
 /* Style the navigation bar */
@@ -45,3 +40,34 @@ body {
       display: block;
     }
   }
+
+
+  /********    Style Upload Page **************/
+  .container-up{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://ak.picdn.net/shutterstock/videos/21281653/thumb/1.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+  width: 380px;
+  height: 480px;
+  position: relative;
+  margin: 6% auto;
+  background:lightsteelblue;
+}
+
+.upload-box{
+  width: 220px;
+  height: 320px;
+  position: relative;
+  margin: 15% auto;
+  top: 25%;
+}
+
+.btn{
+  margin-top: 10px;
+}
