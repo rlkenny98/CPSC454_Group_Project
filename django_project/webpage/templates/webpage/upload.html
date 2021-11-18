@@ -1,20 +1,26 @@
 {% extends "webpage/base.html"%}
+{% load static %}
 
 {% block content %}
 
 <div id="upload-body">
-<div class="container">
-<h1>Upload File!</h1>
-<form method = 'POST' class="col s12" enctype="multipart/form-data">
+<div class="container-up">
+	<div class="form-box">
+		<div class="upload-box">
+			<h1 id="upload-title">Upload File</h1>
+			<p>Please upload your file here:</p>
+			<form method = 'POST' class="col s12" enctype="multipart/form-data">
 
-	{% csrf_token %}
+				{% csrf_token %}
 
-	{{new_form.as_p}}
+				{{new_form.as_p}}
 
-<!--Below is our main file upload input -->
-	<input type = "file" name = 'document'>
-	<p><button type = "submit" class = "waves-effect waves-light btn" style = "background-color: teal">Publish</button></p>
-</form>
+			<!--Below is our main file upload input -->
+				<input type = "file" name = 'document' style="padding-top: 35px;">
+				<p><button id = "submit-btn" type = "submit" class = "waves-effect waves-light btn" style = "background-color: teal">Publish</button></p>
+			</form>
+		</div>
+	</div>
 </div>
 </div>
 {% endblock %}
