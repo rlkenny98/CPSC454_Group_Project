@@ -1,15 +1,19 @@
 {% extends "webpage/base.html"%}
-
 {% block content %}
-<h1>Download File</h1>
-{% for i in file %}
-    <h1>Title:{{i.title}}</h1>
-    <h1>DOWNLOAD THE FILE FROM HERE<a href="{{file}}" download>{{i.title}}</a></h1>
-{% endfor %}
-
-{% for filex in filelist %}
-    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
-{% endfor %}
 
 
+<div id="upload-body">
+    <div class="container-up">
+        <div class="form-box">
+            <div class="upload-box">
+                
+                <h1>Download File</h1>
+                {% for filex in filelist %}
+                    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
