@@ -6,6 +6,10 @@
     <h1>Title:{{i.title}}</h1>
     <h1>DOWNLOAD THE FILE FROM HERE<a href="{{file}}" download>{{i.title}}</a></h1>
 {% endfor %}
+
+{% for filex in filelist %}
+    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
+{% endfor %}
+
+
 {% endblock content %}
-
-

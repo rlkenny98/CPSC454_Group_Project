@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django_project.custom_storage import MediaStorage
-
+from django.core.files.storage import default_storage
 # TO-DO @Maria: Link to any html files here
 #EXAMPlE
 
@@ -29,4 +29,15 @@ def uploadDownload(request):
     return render(request, 'webpage/uploadDownload.html')
 
 def download(request):
-    return render(request, 'webpage/download.html')
+    media = MediaStorage()
+    filelist = media.listdir("")
+    filelist = filelist[1]
+
+    fileObjects = []
+    
+    for filex in filelist:
+        print(filex)
+        fileObject = media.open(filex)
+        fileObjects.append(fileObject)
+
+    return render(request, 'webpage/download.html',{'filelist':filelist})
