@@ -1,19 +1,13 @@
 {% extends "webpage/base.html"%}
 {% block content %}
-
-
-<div id="upload-body">
-    <div class="container-up">
-        <div class="form-box">
-            <div class="upload-box">
-                
-                <h1>Download File</h1>
-                {% for filex in filelist %}
-                    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
+<div class="d-background">
+    <div class="d-form-box">   
+        <h1>Download File</h1>
+        <p>Click on the link to download the file.</p>
+        {% for filex in filelist %}
+        <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
+        {% endfor %}
+    </div>   
 </div>
+
 {% endblock content %}
