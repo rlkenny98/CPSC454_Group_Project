@@ -8,8 +8,8 @@
             <div class="upload-box">
                 
                 <h1>Download File</h1>
-                {% for filex in filelist %}
-                    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
+                {% for file in bucket %}
+                    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{file}}" target="_blank" rel="noopener noreferrer">{{file}}</a></p>
                 {% endfor %}
 
             </div>
