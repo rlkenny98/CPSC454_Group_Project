@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django_project.custom_storage import MediaStorage
@@ -5,6 +6,10 @@ from django.core.files.storage import default_storage
 from django_project import settings, encryption
 from boto3.session import Session
 import boto3
+from s3_encryption_sdk import EncryptedClient
+from s3_encryption_sdk.materials_providers import KmsMaterialsProvider
+import os
+module_dir = os.path.dirname(__file__)  # get current directory
 
 # TO-DO @Maria: Link to any html files here
 #EXAMPlE
@@ -18,23 +23,28 @@ def upload(request):
         # if the post request has a file under the input name 'document', then save the file.
         request_file = request.FILES['document'] if 'document' in request.FILES else None
         if request_file:
-                # save attatched file
-                # create a new instance of FileSystemStorage
-
-                """CRITICAL NOTE: we need to manage our KMS permissions... not sure how"""
                 # check if customer master key exists for this file 
-                cmkID,cmkArn = enc.retrieve_cmk(request_file.name)
+                cmkID,cmkArn = enc.retrieve_cmk("django_project")
                 if not cmkID:
                     # create key if CMK does not exist
-                    enc.create_cmk(request_file.name)
-                    cmkID,cmkArn = enc.retrieve_cmk(request_file.name)
+                    enc.create_cmk("django_project")
+                    cmkID,cmkArn = enc.retrieve_cmk("django_project")
 
                 # not sure if this is right
                 enc.create_data_key(cmkID)
-                enc.encrypt_file(request_file.name,cmkID)
 
+                # this creates file ending in '.encrypted'
+                enc.encrypt_file(request_file,cmkID)
+
+                # create a new instance of FileSystemStorage
                 media = MediaStorage()
-                file = media.save(request_file.name, request_file)
+
+                # this is the encrypted file name?
+                uploadStr = request_file.name+ ".encrypted"
+                # how do we get the encrypted file????
+    
+                # save the encrypted file
+                file = media.save(uploadStr)
                 # the fileurl variable now contains the url to the file. This can be used to serve the file when needed.
                 file= media.url(file)
 

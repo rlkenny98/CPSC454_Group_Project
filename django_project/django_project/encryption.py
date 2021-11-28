@@ -10,7 +10,7 @@ def create_data_key(cmk_id, key_spec="AES_256"):
     """Generate a data key to use when encrypting and decrypting data"""
 
     # Create data key
-    kms_client = boto3.client("kms",region_name = "us-west-2",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    kms_client = boto3.client("kms",region_name = "us-west-1",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
               aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
     response = kms_client.generate_data_key(KeyId=cmk_id, KeySpec=key_spec)
 
@@ -23,7 +23,7 @@ def create_cmk(description="My Customer Master Key"):
     Description is used to differentiate between CMKs.
     """
 
-    kms_client = boto3.client("kms",region_name = "us-west-2",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    kms_client = boto3.client("kms",region_name = "us-west-1",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
               aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
     response = kms_client.create_key(Description=description)
 
@@ -33,7 +33,8 @@ def retrieve_cmk(description):
     """Retrieve an existing KMS CMK based on its description"""
     # Retrieve a list of existing CMKs
     # If more than 100 keys exist, retrieve and process them in batches
-    kms_client = boto3.client("kms",region_name = "us-west-2",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    
+    kms_client = boto3.client("kms",region_name = "us-west-1",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
               aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
     response = kms_client.list_keys()
 
@@ -45,10 +46,12 @@ def retrieve_cmk(description):
     # No matching CMK found
     return None, None
 
-def encrypt_file(filename, cmk_id):
+def encrypt_file(file, cmk_id):
     """Encrypt JSON data using an AWS KMS CMK"""
 
-    with open(filename, "rb") as file:
+    filename = file.name
+    # Replace with desired directory for now. Should be dynamic. 
+    with open("C:/Users/rober_y/Desktop/{}".format(filename), "rb") as file:
       file_contents = file.read()
 
     data_key_encrypted, data_key_plaintext = create_data_key(cmk_id)
@@ -65,12 +68,13 @@ def encrypt_file(filename, cmk_id):
                                                               byteorder='big'))
         file_encrypted.write(data_key_encrypted)
         file_encrypted.write(file_contents_encrypted)
+        
 
 def decrypt_data_key(data_key_encrypted):
     """Decrypt an encrypted data key"""
 
     # Decrypt the data key
-    kms_client = boto3.client("kms",region_name = "us-west-2",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    kms_client = boto3.client("kms",region_name = "us-west-1",aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
               aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
     response = kms_client.decrypt(CiphertextBlob=data_key_encrypted)
 
