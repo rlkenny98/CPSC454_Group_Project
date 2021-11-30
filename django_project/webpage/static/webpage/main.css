@@ -80,14 +80,22 @@ body {
     background-size: contain;
     position: relative;
   }
-
-  .d-form-box{
-    width: 380px;
-    height: auto;
+  .download-box{
+    width: 520px;
+    height: 420px;
     position: relative;
-    margin: auto;
+    margin: 5%;
+    top: 5%;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y:scroll
+  }
+  .d-form-box{
+    width: 600px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
     background:lightsteelblue;
-    text-align: center;
   }
 
     /*********** Register Page ***********/
