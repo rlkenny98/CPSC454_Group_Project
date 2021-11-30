@@ -53,7 +53,7 @@ body {
 }
 
 .form-box{
-  width: 380px;
+  width: 465px;
   height: 480px;
   position: relative;
   margin: 6% auto;
@@ -82,17 +82,17 @@ body {
   }
   .download-box{
     width: 520px;
-    height: 420px;
+    height: 429px;
     position: relative;
     margin: 5%;
     top: 5%;
-    overflow:scroll;
-    overflow-x:hidden;
-    overflow-y:scroll
+    overflow: hidden;
+    overflow-y:scroll;
+    direction: ltr;
   }
   .d-form-box{
     width: 600px;
-    height: 480px;
+    height: 580px;
     position: relative;
     margin: 6% auto;
     background:lightsteelblue;
@@ -100,9 +100,10 @@ body {
 
     /*********** Register Page ***********/
     .r-background{
-      height: auto;
+      height: 100%;
       width: 100%;
       background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://ak.picdn.net/shutterstock/videos/21281653/thumb/1.jpg);
+      background-position: center;
       background-size: contain;
       position: absolute;
   }

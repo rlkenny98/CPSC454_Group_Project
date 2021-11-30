@@ -6,11 +6,10 @@
     <div class="container-up">
         <div class="d-form-box">
             <div class="download-box">
-                
                 <h1>Your Files</h1>
-                {% for filex in filelist %}
-                    <p><a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{filex}}" target="_blank" rel="noopener noreferrer">{{filex}}</a></p>
-                    <!--{{filex}}-->
+                {% for key,value in dictList.items %}
+                <p> <a href="https://cpsc454-encryptfiles.s3.us-west-1.amazonaws.com/media/{{value}}" target="_blank" rel="noopener noreferrer">{{key}}</a></p>
+                <!--{{filex}}-->
                 {% endfor %}
 
             </div>
