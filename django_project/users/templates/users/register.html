@@ -3,11 +3,8 @@
 
 
 {% block content %}
-
-<div id="upload-body">
-    <div class="container-up">
-	    <div class="form-box">
-            <div class="content-section">
+    <div class="r-background">
+         <div class="content-section">
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
@@ -23,10 +20,6 @@
                             Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
                         </small>
                     </div>
-                </div>
             </div>
-        </div>
     </div>
-</div>
-
 {% endblock %}
